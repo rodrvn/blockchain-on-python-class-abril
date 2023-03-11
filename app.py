@@ -77,14 +77,13 @@ cadena = Blockchain()
 # mina el bloque
 @app.route('/cerrar', methods=['GET'])
 def minar():
-    bloque_index = cadena.cerrar_bloque()
-    nuevo_bloque = cadena.cadena[bloque_index]
+    bloque = cadena.cerrar_bloque()
 
     response = {
         'mensaje': "Nuevo bloque cerrado",
-        'index': nuevo_bloque.index,
-        'transaccion': nuevo_bloque.transacciones,
-        'timestamp': nuevo_bloque.timestamp
+        'index': bloque.index,
+        'transaccion': bloque.transacciones,
+        'timestamp': bloque.timestamp
     }
     return jsonify(response), 200
 
